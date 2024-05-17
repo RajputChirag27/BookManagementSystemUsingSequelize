@@ -1,4 +1,4 @@
-import { Sequelize, Dialect } from 'sequelize';
+import { Sequelize } from 'sequelize';
 import { dbConfig } from '../config/config';
 
 const sequelize = new Sequelize(
@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
   {
     host: dbConfig.development.host || process.env.DB_HOST,
     dialect:
-      (dbConfig.development.dialect as Dialect) || process.env.DB_DIALECT,
+      (dbConfig.development.dialect as any) || process.env.DB_DIALECT,
   }
 );
 

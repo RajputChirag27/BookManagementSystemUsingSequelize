@@ -3,7 +3,7 @@ import { UserModel } from "../models";
 
 
 @injectable()
-export default class UserService {
+export class UserService {
     async getUsers() {
         return await UserModel.findAll()
     }

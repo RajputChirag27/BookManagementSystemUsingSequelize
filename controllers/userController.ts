@@ -2,12 +2,12 @@ import { inject } from "inversify";
 import { controller, httpDelete, httpGet, httpPost, httpPut } from 'inversify-express-utils'
 import { NextFunction, Request, Response } from "express";
 import { TYPES } from "../types/type";
-import UserService from "../services/userService";
+import {UserService} from "../services/userService";
 import customErrorHandler from "../handlers/errorHandler";
 import { statusCodes } from "../constants/statusCodes";
 
 @controller('/user')
-export default class UserController {
+export class UserController {
     constructor(@inject(UserService) private userService: UserService) { }
 
     @httpGet('/')
