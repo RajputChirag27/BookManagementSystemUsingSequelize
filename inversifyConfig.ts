@@ -1,9 +1,8 @@
 import { Container, ContainerModule, interfaces } from 'inversify';
-import "reflect-metadata"
-import * as controller from './controllers'
-import * as models from './models'
-import * as service from './services'
-
+import 'reflect-metadata';
+import * as controller from './controllers';
+import * as models from './models';
+import * as service from './services';
 
 const container = new Container();
 
@@ -17,7 +16,6 @@ const container = new Container();
 //         bind(model).to(model);
 //     })
 // })
-
 
 // // Controller Binding
 
@@ -37,21 +35,20 @@ const container = new Container();
 //     })
 //   })
 
-
 for (const controllerName in controller) {
-    const Controller = controller[controllerName]
-    container.bind<typeof Controller>(Controller).toSelf()
-  }
+  const Controller = controller[controllerName];
+  container.bind<typeof Controller>(Controller).toSelf();
+}
 
-  for (const serviceName in service) {
-    const Service = service[serviceName]
-    container.bind<typeof Service>(Service).toSelf()
-  }
+for (const serviceName in service) {
+  const Service = service[serviceName];
+  container.bind<typeof Service>(Service).toSelf();
+}
 
-  for(const moduleName in module){
-    const Module = module[moduleName]
-    container.bind<typeof Module>(Module).to(Module)
-  }
+for (const moduleName in module) {
+  const Module = module[moduleName];
+  container.bind<typeof Module>(Module).to(Module);
+}
 
 //   container.bind(Services.UserService).to(Services.UserService)
 

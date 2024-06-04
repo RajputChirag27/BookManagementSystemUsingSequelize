@@ -23,10 +23,20 @@ sequelize
     console.error('Unable to connect to the database: ', error);
   });
 
-sequelize.sync()
-  .then(() => console.log('Database synced'))
-  .catch(error => console.error('Error syncing database', error));
+// const connect = async () =>{
+//   try{
+//     await sequelize.authenticate();
+//     console.log('Connection has been established successfully.');
+//   } catch(err){
+//     console.error(err);
+//   }
 
+// }
+
+sequelize
+  .sync()
+  .then(() => console.log('Database synced'))
+  .catch((error) => console.error('Error syncing database', error));
 
 // Swagger Docs
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
@@ -37,11 +47,10 @@ const server = new InversifyExpressServer(
   null,
   { rootPath: '/api' },
   app
-)
+);
 
 const appConfigured = server.build();
 // Creating an Express app
-
 
 // Listening an Express App
 appConfigured.listen(port, () => {

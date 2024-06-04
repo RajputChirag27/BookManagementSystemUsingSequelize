@@ -7,8 +7,7 @@ const sequelize = new Sequelize(
   dbConfig.development.password || process.env.DB_PASSWORD,
   {
     host: dbConfig.development.host || process.env.DB_HOST,
-    dialect:
-      (dbConfig.development.dialect as any) || process.env.DB_DIALECT,
+    dialect: (dbConfig.development.dialect as any) || process.env.DB_DIALECT,
   }
 );
 
